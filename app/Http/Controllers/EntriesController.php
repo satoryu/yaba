@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Entry;
+
+class EntriesController extends Controller
+{
+    public function index() {
+        $entries = Entry::all();
+
+        return view('entries.index', ['entries' => $entries]);
+    }
+
+    public function new() {
+        $entry = new Entry;
+
+        return view('entries.new', ['entry' => $entry]);
+    }
+
+    public function create(Request $request) {
+        $entry = new Entry;
+
+        $entry->title = $request->input('title');
+        $entry->body = $request->input('body');
+
+        $entry->save();
+
+        return redirect(route('home'));
+    }
+}
