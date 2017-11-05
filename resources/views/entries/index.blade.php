@@ -6,6 +6,10 @@
 
 <ul>
     @foreach($entries as $entry)
-    <li>{{ $entry->title }}</li>
+    <li>
+        <a href="{{ route('show_entry', ['id' => $entry->id]) }}">
+            {{ $entry->title }}
+        </a>
+    </li>
     @endforeach
 </ul>

@@ -30,4 +30,10 @@ class EntriesController extends Controller
 
         return redirect(route('home'));
     }
+
+    public function show($id) {
+        $entry = Entry::find($id);
+
+        return view('entries.show', ['entry' => $entry]);
+    }
 }
