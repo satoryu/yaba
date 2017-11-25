@@ -5,8 +5,8 @@
 @section('content')
     <h1>All Entries</h1>
 
-    <a href="{{ route('new_entry') }}">
-        Write new entry
+    <a class="btn btn-primary" href="{{ route('new_entry') }}">
+        <i class="glyphicon glyphicon-pencil"></i> Write new entry
     </a>
 
     <ul>
