@@ -9,7 +9,7 @@ use App\Entry;
 class EntriesController extends Controller
 {
     public function index() {
-        $entries = Entry::all();
+        $entries = Entry::getRecentEntries()->get();
 
         return view('entries.index', ['entries' => $entries]);
     }
