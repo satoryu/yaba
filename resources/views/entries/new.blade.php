@@ -1,13 +1,21 @@
-<form method="POST" action="{{ route('create_entry') }}">
-  {{ csrf_field() }}
+@extends('layouts.app')
 
-  <label for="title">Title</label>
-  <input type="text" name="title" value="{{ $entry->title }}" required>
+@section('title', 'New Entry')
 
-  <label for="body">Body</label>
-  <textarea name="body">
-  {{ $entry->body }}
-  </textarea>
+@section('content')
+  <form method="POST" action="{{ route('create_entry') }}">
+    {{ csrf_field() }}
 
-  <input type="submit">
-</form>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" name="title" value="{{ $entry->title }}" required>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea class="form-control" name="body" rows="15">{{ $entry->body }}</textarea>
+    </div>
+
+    <input class="btn btn-success" type="submit">
+  </form>
+@endsection
