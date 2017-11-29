@@ -21,6 +21,11 @@ class EntriesController extends Controller
     }
 
     public function create(Request $request) {
+        $validate = $request->validate([
+            'title' => 'required|max:64',
+            'body' => 'required'
+        ]);
+
         $entry = new Entry;
 
         $entry->title = $request->input('title');
