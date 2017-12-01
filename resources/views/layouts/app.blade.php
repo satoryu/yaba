@@ -7,9 +7,12 @@
         <link href="/css/app.css" rel="stylesheet">
 
         @if (env('INSTRUMENTATION_KEY'))
-            <script src="/js/application-insights.js"></script>
+            <script src="/js/ai.js"></script>
             <script>
-                appInsights.downloadAndSetup({ instrumentationKey: '{{ env('INSTRUMENTATION_KEY') }}' });
+                var init = new Microsoft.ApplicationInsights.Initialization({
+                    config: { instrumentationKey: '{{ env('INSTRUMENTATION_KEY') }}' }
+                });
+                var appInsights = init.loadAppInsights();
                 appInsights.trackPageView();
             </script>
         @endif
