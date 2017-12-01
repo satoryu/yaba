@@ -1,0 +1,1 @@
+window.appInsights = require('applicationinsights-js').AppInsights;
