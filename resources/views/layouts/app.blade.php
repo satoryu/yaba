@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/css/app.css" rel="stylesheet">
+        <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
         @if (env('INSTRUMENTATION_KEY'))
-            <script src="/js/ai.js"></script>
+            <script src="{{ mix('/js/ai.js') }}"></script>
             <script>
                 var init = new Microsoft.ApplicationInsights.Initialization({
                     config: { instrumentationKey: '{{ env('INSTRUMENTATION_KEY') }}' }
@@ -16,7 +16,7 @@
                 appInsights.trackPageView();
             </script>
         @endif
-        <script src="/js/app.js"></script>
+        <script src="{{ mix('/js/app.js') }}"></script>
 
         <title>
             @yield('title') - Laravel Blog
