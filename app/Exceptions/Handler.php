@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use \ApplicationInsights\Telemetry_Client;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -37,6 +39,13 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         parent::report($exception);
+
+        if (env('INSTRUMENTATION_KEY')) {
+            $client = new Telemetry_Client();
+            $client->getContext()->setInstrumentationKey(env('INSTRUMENTATION_KEY'));
+            $client->trackException($exception);
+            $client->flush();
+        }
     }
 
     /**
