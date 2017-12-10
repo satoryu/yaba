@@ -10,4 +10,9 @@ class Entry extends Model
     {
         return self::orderBy('created_at', 'desc')->take(7);
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

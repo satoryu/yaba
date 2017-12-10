@@ -10,6 +10,8 @@
     {{ $entry->body }}
     </div>
 
+    @include('comments', ['entry' => $entry])
+
     <a href="{{ route('home') }}">
     < Back
     </a>
