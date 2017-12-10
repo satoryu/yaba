@@ -6,4 +6,4 @@ services:
       - "1433:1433"
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=l@r@v3lbl0g
+      - MSSQL_SA_PASSWORD=L@r@v3lbl0g
