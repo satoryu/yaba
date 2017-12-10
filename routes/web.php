@@ -13,5 +13,5 @@
 
 Route::get('/', 'EntriesController@index')->name('home');
 Route::get('/entries/new', 'EntriesController@new')->name('new_entry');
-Route::get('/entries/{id}', 'EntriesController@show')->name('show_entry');
+Route::get('/entries/{id}', 'EntriesController@show')->name('entry');
 Route::post('/entries', 'EntriesController@create')->name('create_entry');

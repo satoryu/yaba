@@ -12,7 +12,7 @@
     <ul>
         @foreach($entries as $entry)
         <li>
-            <a href="{{ route('show_entry', ['id' => $entry->id]) }}">
+            <a href="{{ route('entry', ['id' => $entry->id]) }}">
                 {{ $entry->title }}
             </a>
         </li>
