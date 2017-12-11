@@ -1,12 +1,15 @@
 <h3>Comments</h3>
 
-@forelse ($entry->comments() as $comment)
-    <div class="panel">
+@forelse ($entry->comments()->get() as $comment)
+    <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title"> {{ $comment->title }} </h4>
+            <h4 class="panel-title"> {{ $comment->name }} said: </h4>
         </div>
         <div class="panel-body">
             {{ $comment->body }}
+        </div>
+        <div class="panel-footer text-right">
+            posted at {{ $comment->created_at }}
         </div>
     </div>
 @empty
@@ -30,8 +33,7 @@
     </div>
 
     <div class="form-group">
-        <textarea class="form-control">
-        </textarea>
+        <textarea name="body" class="form-control"></textarea>
     </div>
 
     <button type="submit" class="btn btn-success">Post</button>
