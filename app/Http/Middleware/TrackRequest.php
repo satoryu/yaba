@@ -27,7 +27,8 @@ class TrackRequest
             try {
                 $duration = (time() - $start) * 1000;
                 $name = $request->method() . ' ' . $request->route()->uri;
-                $client->trackRequest($name, $request->url(), $start, $duration, $response->status());
+                $success = ($response->status() >= 200 && $response->status() < 400);
+                $client->trackRequest($name, $request->url(), $start, $duration, $response->status(), $success);
                 $client->flush();
             } catch(Exception $error) {
                 \Log::warning($error->getMessage());

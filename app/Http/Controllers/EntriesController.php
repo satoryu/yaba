@@ -39,6 +39,10 @@ class EntriesController extends Controller
     public function show($id) {
         $entry = Entry::find($id);
 
+        if (is_null($entry)) {
+            abort(404);
+        }
+
         return view('entries.show', ['entry' => $entry]);
     }
 }
