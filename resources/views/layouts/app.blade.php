@@ -23,6 +23,8 @@
         </title>
     </head>
     <body>
+        @include('parts.navbar')
+
         <div class="container">
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
