@@ -38,7 +38,14 @@
                 @endforeach
             @endif
 
-            @yield('content')
+            <div class="row">
+                <div class="col-md-8">
+                    @yield('content')
+                </div>
+                <div class="cols-md-8">
+                    @yield('sidebar')
+                </div>
+            </div>
         </div>
     </body>
 </html>
