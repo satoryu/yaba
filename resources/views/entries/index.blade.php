@@ -3,19 +3,21 @@
 @section('title', 'All entries')
 
 @section('content')
-    <h1>All Entries</h1>
-
-    <a class="btn btn-primary" href="{{ route('new_entry') }}">
-        <i class="glyphicon glyphicon-pencil"></i> Write new entry
-    </a>
-
-    <ul>
-        @foreach($entries as $entry)
-        <li>
-            <a href="{{ route('entry', ['id' => $entry->id]) }}">
-                {{ $entry->title }}
-            </a>
-        </li>
-        @endforeach
-    </ul>
+    @foreach($entries as $entry)
+    <div class="entry">
+        <div class="entry-header">
+            <h2>
+                <a href="{{ route('entry', ['id' => $entry->id]) }}">
+                    {{ $entry->title }}
+                </a>
+            </h2>
+        </div>
+        <div class="entry-body">
+            {{ $entry->body }}
+        </div>
+        <div class="entry-footer text-right">
+            Posted at {{ $entry->created_at }}
+        </div>
+    </div>
+    @endforeach
 @endsection
