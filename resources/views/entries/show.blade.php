@@ -3,7 +3,7 @@
 @section('title', $entry->title)
 
 @section('content')
-    @include('parts.entry', ['entry' => $entry, 'brief' => true])
+    @include('parts.entry', ['entry' => $entry])
 
     @include('comments', ['entry' => $entry])
 
