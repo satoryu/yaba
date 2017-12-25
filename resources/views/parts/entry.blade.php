@@ -10,6 +10,6 @@
         {!! $entry->renderBody() !!}
     </div>
     <div class="entry-footer text-right">
-        Posted at {{ $entry->created_at }}
+        Posted at {{ $entry->created_at_tz }}
     </div>
 </div>

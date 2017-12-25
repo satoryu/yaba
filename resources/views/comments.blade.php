@@ -9,7 +9,7 @@
             {{ $comment->body }}
         </div>
         <div class="panel-footer text-right">
-            posted at {{ $comment->created_at }}
+            posted at {{ $comment->created_at_tz }}
         </div>
     </div>
 @empty
