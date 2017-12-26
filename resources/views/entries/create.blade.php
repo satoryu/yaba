@@ -3,7 +3,7 @@
 @section('title', 'New Entry')
 
 @section('content')
-  <form method="POST" action="{{ route('create_entry') }}">
+  <form method="POST" action="{{ route('entries.store') }}">
     {{ csrf_field() }}
 
     <div class="form-group">

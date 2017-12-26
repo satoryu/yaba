@@ -1,10 +1,34 @@
 <div class="entry">
     <div class="entry-header">
         <h2>
-            <a href="{{ route('entry', ['id' => $entry->id]) }}">
+            <a href="{{ route('entries.show', ['id' => $entry->id]) }}">
                 {{ $entry->title }}
             </a>
         </h2>
+
+        <div class="pull-right">
+            <a href="{{ route('entries.edit', ['entry' => $entry]) }}"><span class="glyphicon glyphicon-cog"></span></a>
+            <a href="" data-toggle="modal" data-target="#delete_dialog-{{ $entry->id }}">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            <div class="modal fade" id="delete_dialog-{{ $entry->id }}" tabindex="-1" role="dialog">
+                <form method="POST" action="{{ route('entries.destroy', ['entry' => $entry]) }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                Are you sure to delete the entry '{{ $entry->title }}'?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn btn-danger" value="Delete" >
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="entry-body">
         {!! $entry->renderBody() !!}
