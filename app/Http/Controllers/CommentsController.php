@@ -21,6 +21,6 @@ class CommentsController extends Controller
 
         $entry->comments()->save($comment);
 
-        return redirect(route('entry', ['id' => $entry_id]));
+        return redirect(route('entries.show', ['entry' => $entry_id]));
     }
 }

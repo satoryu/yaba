@@ -15,7 +15,7 @@
                 <li></li>
             </ul>
 
-            <form class="navbar-form navbar-right" method="GET" action="{{ route('new_entry') }}">
+            <form class="navbar-form navbar-right" method="GET" action="{{ route('entries.create') }}">
                 <button type="submit" class="btn btn-primary">
                     <i class="glyphicon glyphicon-pencil"></i> Write new entry
                 </button>

@@ -12,8 +12,6 @@
 */
 
 Route::get('/', 'EntriesController@index')->name('home');
-Route::get('/entries/new', 'EntriesController@new')->name('new_entry');
-Route::get('/entries/{id}', 'EntriesController@show')->name('entry');
-Route::post('/entries', 'EntriesController@create')->name('create_entry');
+Route::resource('entries', 'EntriesController');
 
 Route::post('/entries/{entry_id}/comments', 'CommentsController@create')->name('post_comment');
