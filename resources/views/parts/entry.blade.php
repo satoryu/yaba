@@ -1,7 +1,7 @@
 <div class="entry">
     <div class="entry-header">
         <h2>
-            <a href="{{ route('entries.show', ['id' => $entry->id]) }}">
+            <a href="{{ route('entries.show', ['entry' => $entry->id]) }}">
                 {{ $entry->title }}
             </a>
         </h2>
