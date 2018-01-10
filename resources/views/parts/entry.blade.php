@@ -7,10 +7,25 @@
         </h2>
 
         <div class="pull-right">
-            <a href="{{ route('entries.edit', ['entry' => $entry]) }}"><span class="glyphicon glyphicon-cog"></span></a>
-            <a href="" data-toggle="modal" data-target="#delete_dialog-{{ $entry->id }}">
-                <span class="glyphicon glyphicon-trash"></span>
-            </a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </button>
+
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{ route('entries.edit', ['entry' => $entry]) }}">
+                            <span class="glyphicon glyphicon-edit"></span> Edit
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" data-toggle="modal" data-target="#delete_dialog-{{ $entry->id }}">
+                            <span class="glyphicon glyphicon-trash"></span> Delete
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="modal fade" id="delete_dialog-{{ $entry->id }}" tabindex="-1" role="dialog">
                 <form method="POST" action="{{ route('entries.destroy', ['entry' => $entry]) }}">
                     {{ csrf_field() }}
