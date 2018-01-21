@@ -26,34 +26,35 @@ class EntriesController extends Controller
             'body' => 'required'
         ]);
 
-        $entry = new Entry;
+        $user = \Auth::user();
 
-        $entry->title = $request->input('title');
-        $entry->body = $request->input('body');
+        $title = $request->input('title');
+        $body = $request->input('body');
 
-        $entry->save();
+        $user->entries()->create([
+            'title' => $title,
+            'body' => $body
+        ]);
 
         return redirect(route('home'));
     }
 
     public function show($entry) {
-        $entry = Entry::find($entry);
-
-        if (is_null($entry)) {
-            abort(404);
-        }
+        $entry = Entry::findOrFail($entry);
 
         return view('entries.show', ['entry' => $entry]);
     }
 
     public function edit($entry) {
-        $entry = Entry::find($entry);
+        $user = \Auth::user();
+        $entry = $user->entries()->findOrFail($entry);
 
         return view('entries.edit', ['entry' => $entry]);
     }
 
     public function update($entry, Request $request) {
-        $entry = Entry::find($entry);
+        $user = \Auth::user();
+        $entry = $user->entries()->findOrFail($entry);
 
         $entry->title = $request->input('title');
         $entry->body = $request->input('body');
@@ -63,7 +64,8 @@ class EntriesController extends Controller
     }
 
     public function destroy($entry) {
-        $entry = Entry::find($entry);
+        $user = \Auth::user();
+        $entry = $user->entries()->findOrFail($entry);
 
         $entry->delete();
 
