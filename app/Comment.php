@@ -11,7 +11,13 @@ class Comment extends Model
     use TimestampsTrait;
 
     //
-    protected $fillable = [
-        'name', 'body', 'email'
-    ];
+    protected $fillable = [ 'body' ];
+
+    public function entry() {
+        return $this->belongsTo('App\Comment');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\Comment');
+    }
 }
