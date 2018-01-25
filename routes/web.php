@@ -12,6 +12,7 @@
 */
 
 Route::get('/login', 'Auth\SocialAccountController@redirectToProvider')->name('login');
+Route::get('/logout', 'Auth\SocialAccountController@logout')->name('logout');
 Route::get('/callback', 'Auth\SocialAccountController@handleProviderCallback')->name('callback');
 
 Route::group(['middleware' => 'auth'], function() {
