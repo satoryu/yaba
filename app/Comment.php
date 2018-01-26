@@ -14,10 +14,10 @@ class Comment extends Model
     protected $fillable = [ 'body' ];
 
     public function entry() {
-        return $this->belongsTo('App\Comment');
+        return $this->belongsTo('App\Entry');
     }
 
     public function user() {
-        return $this->belongsTo('App\Comment');
+        return $this->belongsTo('App\User');
     }
 }

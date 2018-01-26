@@ -3,7 +3,7 @@
 @forelse ($entry->comments()->get() as $comment)
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h4 class="panel-title"> {{ $comment->name }} said: </h4>
+            <h4 class="panel-title"> {{ $comment->user->name }} said: </h4>
         </div>
         <div class="panel-body">
             {{ $comment->body }}
@@ -20,17 +20,6 @@
 
 <form class="form" method="POST" action="{{ route('post_comment', ['entry_id' => $entry->id]) }}">
     {{ csrf_field() }}
-
-    <div class="row">
-        <div class="col-md-6 form-group">
-            <label for="name">Name</label>
-            <input name="name" class="form-control" type="text">
-        </div>
-        <div class="col-md-6 form-group">
-            <label for="email">Email</label>
-            <input name="email" class="form-control" type="email">
-        </div>
-    </div>
 
     <div class="form-group">
         <textarea name="body" class="form-control"></textarea>

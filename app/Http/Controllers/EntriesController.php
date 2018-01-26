@@ -40,7 +40,7 @@ class EntriesController extends Controller
     }
 
     public function show($entry) {
-        $entry = Entry::findOrFail($entry);
+        $entry = Entry::with('comments.user')->findOrFail($entry);
 
         return view('entries.show', ['entry' => $entry]);
     }
