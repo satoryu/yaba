@@ -12,7 +12,7 @@ class CommentsController extends Controller
     public function create(Request $request, $entry_id)
     {
         $user = \Auth::user();
-        $entry = $user->entries()->findOrFail($entry_id);
+        $entry = Entry::findOrFail($entry_id);
 
         $validate = $request->validate([
             'body' => 'required|max:1024'

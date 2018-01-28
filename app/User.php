@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Entry;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -34,11 +36,16 @@ class User extends Authenticatable
 
     public function entries()
     {
-        return $this->hasMany('App\Entry');
+        return $this->hasMany(Entry::class);
     }
 
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+
+    public function hasEntry(Entry $entry)
+    {
+        return $this->entries()->where('id', $entry->id)->exists();
     }
 }
