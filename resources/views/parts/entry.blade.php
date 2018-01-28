@@ -7,6 +7,7 @@
         </h2>
 
         <div class="pull-right">
+            @if (Auth::user()->hasEntry($entry))
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-cog"></span>
@@ -43,6 +44,7 @@
                     </div>
                 </form>
             </div>
+            @endif
         </div>
     </div>
     <div class="entry-body">

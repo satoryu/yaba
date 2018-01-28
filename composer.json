@@ -6,9 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "doctrine/dbal": "^2.6",
         "erusev/parsedown": "^1.6",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "microsoft/application-insights": "^0.4.1"
     },
@@ -48,8 +50,7 @@
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover",
-            "@php artisan migrate --force -v"
+            "@php artisan package:discover"
         ]
     },
     "config": {
