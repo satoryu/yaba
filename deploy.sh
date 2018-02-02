@@ -89,14 +89,10 @@ if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
   exitWithMessageOnError "Kudu Sync failed"
 fi
 
-# 2. Verify composer installed
-hash composer 2>/dev/null
-exitWithMessageOnError "Missing composer executable"
-
-# 3. Initialize Composer Config
+# 2. Initialize Composer Config
 initializeDeploymentConfig
 
-# 4. Use composer
+# 3. Use composer
 echo "$DEPLOYMENT_TARGET"
 if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
   echo "Found composer.json"
@@ -106,7 +102,7 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
   popd
 fi
 
-# 5. Generate Caches
+# 4. Generate Caches
 pushd $DEPLOYMENT_TARGET
 php artisan config:cache
 exitWithMessageOnError "Failed to generate config cache"
