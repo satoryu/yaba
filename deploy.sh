@@ -87,20 +87,22 @@ pushd $DEPLOYMENT_SOURCE
   initializeDeploymentConfig
   ./bin/composer install $COMPOSER_ARGS
   exitWithMessageOnError "Composer install failed"
-
-  php artisan config:cache
-  exitWithMessageOnError "Failed to generate config cache"
-  php artisan route:cache
-  exitWithMessageOnError "Failed to generate route cache"
 popd
-
-echo PHP deployment
 
 #  KuduSync
 if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
   exitWithMessageOnError "Kudu Sync failed"
 fi
+
+pushd $DEPLOYMENT_TARGET
+  php artisan config:cache
+  exitWithMessageOnError "Failed to generate config cache"
+  php artisan route:cache
+  exitWithMessageOnError "Failed to generate route cache"
+
+echo PHP deployment
+
 
 ##################################################################################################################################
 echo "Finished successfully."
