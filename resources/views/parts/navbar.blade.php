@@ -20,7 +20,7 @@
                     <li>
                         <form class="navbar-form" method="GET" action="{{ route('entries.create') }}">
                             <button type="submit" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i> Write new entry
+                                <i class="fas fa-edit"></i> Write new entry
                             </button>
                         </form>
                     </li>
@@ -31,7 +31,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('logout') }}"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+                                <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -39,7 +39,7 @@
             @else
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ route('login') }}"><i class="glyphicon glyphicon-log-in"></i> Login</a>
+                        <a href="{{ route('login') }}"><i class="fab fa-github"></i> Login</a>
                     </li>
                 </ul>
             @endif
