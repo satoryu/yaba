@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-md-3">
                     <a href="{{ route('login') }}" class="btn btn-success">
-                        <i class="glyphicon glyphicon-log-in"></i> Login with GitHub
+                        <i class="fab fa-github"></i> Login with GitHub
                     </a>
                 </div>
             </div>
