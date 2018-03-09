@@ -36,7 +36,7 @@ class EntriesController extends Controller
             'body' => $body
         ]);
 
-        return redirect(route('home'));
+        return redirect(route('entries.index'));
     }
 
     public function show($entry) {
@@ -69,6 +69,6 @@ class EntriesController extends Controller
 
         $entry->delete();
 
-        return redirect(route('home'))->with(['status' => 'Successfully deleted.']);
+        return redirect(route('entries.index'))->with(['status' => 'Successfully deleted.']);
     }
 }

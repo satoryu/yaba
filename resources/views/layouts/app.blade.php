@@ -19,7 +19,7 @@
         <script src="{{ mix('/js/app.js') }}"></script>
 
         <title>
-            @yield('title') - Laravel Blog
+            @yield('title') - YABA
         </title>
     </head>
     <body>
@@ -39,12 +39,18 @@
             @endif
 
             <div class="row">
-                <div class="col-md-8">
-                    @yield('content')
-                </div>
-                <div class="cols-md-8">
-                    @yield('sidebar')
-                </div>
+                @hasSection('sidebar')
+                    <div class="col-md-8">
+                        @yield('content')
+                    </div>
+                    <div class="cols-md-4">
+                        @yield('sidebar')
+                    </div>
+                @else
+                    <div class="col-md-12">
+                        @yield('content')
+                    </div>
+                @endif
             </div>
         </div>
     </body>
