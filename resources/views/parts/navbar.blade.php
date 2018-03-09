@@ -15,11 +15,34 @@
                 <li></li>
             </ul>
 
-            <form class="navbar-form navbar-right" method="GET" action="{{ route('entries.create') }}">
-                <button type="submit" class="btn btn-primary">
-                    <i class="glyphicon glyphicon-pencil"></i> Write new entry
-                </button>
-            </form>
+            @if (Auth::check())
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form" method="GET" action="{{ route('entries.create') }}">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-pencil"></i> Write new entry
+                            </button>
+                        </form>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            {{ Auth::user()->name }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('logout') }}"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            @else
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ route('login') }}"><i class="glyphicon glyphicon-log-in"></i> Login</a>
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
 </nav>

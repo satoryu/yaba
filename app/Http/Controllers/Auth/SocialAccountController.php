@@ -26,13 +26,13 @@ class SocialAccountController extends Controller
 
         auth()->login($authUser, true);
 
-        return redirect(route('home'));
+        return redirect(route('entries.index'));
     }
 
     public function logout()
     {
         \Auth::logout();
 
-        return redirect(route('login'));
+        return redirect(route('welcome'));
     }
 }
