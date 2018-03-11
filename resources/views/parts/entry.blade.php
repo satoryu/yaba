@@ -10,18 +10,18 @@
             @if (Auth::user()->hasEntry($entry))
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="glyphicon glyphicon-cog"></span>
+                    <i class="fas fa-cog"></i>
                 </button>
 
                 <ul class="dropdown-menu">
                     <li>
                         <a href="{{ route('entries.edit', ['entry' => $entry]) }}">
-                            <span class="glyphicon glyphicon-edit"></span> Edit
+                            <i class="fas fa-edit"></i> Edit
                         </a>
                     </li>
                     <li>
                         <a href="" data-toggle="modal" data-target="#delete_dialog-{{ $entry->id }}">
-                            <span class="glyphicon glyphicon-trash"></span> Delete
+                            <i class="fas fa-trash-alt"></i> Delete
                         </a>
                     </li>
                 </ul>
