@@ -7,7 +7,7 @@
 
     @include('comments', ['entry' => $entry])
 
-    <a href="{{ route('home') }}">
+    <a href="{{ route('entries.index') }}">
     < Back
     </a>
 @endsection
