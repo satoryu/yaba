@@ -40,6 +40,7 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
 
+        \Log::error($exception->getMessage());
         if (env('INSTRUMENTATION_KEY')) {
             $client = new Telemetry_Client();
             $client->getContext()->setInstrumentationKey(env('INSTRUMENTATION_KEY'));
