@@ -1,6 +1,6 @@
 <h3>Comments</h3>
 
-@forelse ($entry->comments()->get() as $comment)
+@forelse ($entry->comments as $comment)
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title"> {{ $comment->user->name }} said: </h4>
