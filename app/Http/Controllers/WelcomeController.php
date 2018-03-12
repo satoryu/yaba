@@ -8,6 +8,10 @@ class WelcomeController extends Controller
 {
     public function index()
     {
+        if (\Auth::check()) {
+            return redirect(route('entries.index'));
+        }
+
         return view('welcome');
     }
 }
