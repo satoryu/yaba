@@ -17,9 +17,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $handler = new StreamHandler('php://stdout');
-        $handler = new ErrorLogHandler();
-        \Log::getMonolog()->pushHandler($handler);
     }
 
     /**
@@ -29,9 +26,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (env('APP_ENV') == 'local')
-        {
-            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
-        }
     }
 }
