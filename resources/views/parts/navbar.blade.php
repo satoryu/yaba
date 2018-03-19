@@ -26,6 +26,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <img class="img-rounded" width="32px" src="{{ Auth::user()->accounts->first()->avatar_url }}" alt="">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </a>
