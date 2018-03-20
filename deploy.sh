@@ -100,7 +100,7 @@ pushd $DEPLOYMENT_TARGET
   exitWithMessageOnError "Failed to generate config cache"
   php artisan route:cache
   exitWithMessageOnError "Failed to generate route cache"
-  php artisan migrate
+  php artisan migrate --force
   exitWithMessageOnError "Failed to migrate Database"
 
 echo PHP deployment
