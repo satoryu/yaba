@@ -72,5 +72,13 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
+      - run:
+          name: Generate application encryption key
+          command: php artisan key:generate
+
+      - run:
+          name: Migrate
+          command: php artisan migrate
+
       # run tests!
       - run: ./bin/composer exec -v phpunit
