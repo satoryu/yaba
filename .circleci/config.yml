@@ -51,7 +51,7 @@ jobs:
           name: 'Install mssql-tools'
           command: |
             sudo apt-get update && \
-            ACCEPT_EULA=Y sudo apt-get install -y \
+            sudo ACCEPT_EULA=Y apt-get install -y \
                 unixodbc \
                 unixodbc-dev \
                 mssql-tools \
