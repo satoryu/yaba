@@ -9,7 +9,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1.5-browsers
         environment:
-          - ACCEPT_EULA: Y
           - APP_ENV: CI
           - DB_HOST: sqlsrver
           - DB_PORT: 1433
@@ -62,7 +61,7 @@ jobs:
 
       - run:
           name: Create Database
-          command: sqlcmd -H localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
+          command: /opt/mssql-tools/bin/sqlcmd -H localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
 
       - run: ./bin/composer install -n --prefer-dist
 
