@@ -10,7 +10,8 @@ jobs:
       - image: circleci/php:7.1.5-browsers
         environment:
           - APP_ENV: CI
-          - DB_HOST: sqlsrver
+          - DB_CONNECTION: sqlsrv
+          - DB_HOST: localhost
           - DB_PORT: 1433
           - DB_DATABASE: blog
           - DB_USERNAME: SA
@@ -74,7 +75,9 @@ jobs:
 
       - run:
           name: Generate application encryption key
-          command: php artisan key:generate
+          command: |
+            cp .env.example .env
+            php artisan key:generate
 
       - run:
           name: Migrate
