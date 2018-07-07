@@ -60,8 +60,9 @@ jobs:
                 locales
 
       - run:
-        name: Create Database
-        command: sqlcmd -H localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
+          name: Create Database
+          command: sqlcmd -H localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
+
       - run: ./bin/composer install -n --prefer-dist
 
       - save_cache:
