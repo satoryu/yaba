@@ -8,6 +8,17 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/php:7.1.5-browsers
+        environment:
+          - APP_ENV: CI
+          - DB_HOST: sqlsrver
+          - DB_PORT: 1433
+          - DB_DATABASE: blog
+          - DB_USERNAME: SA
+          - DB_PASSWORD: L@r@v3lbl0g
+      - image: microsoft/mssql-server-linux:2017-latest
+        environment:
+          - ACCEPT_EULA: Y
+          - MSSQL_SA_PASSWORD: L@r@v3lbl0g
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -26,6 +37,21 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run:
+          name: 'Install mssql-tools'
+          command: |
+          sudo apt-get update && \
+          ACCEPT_EULA=Y sudo apt-get install -y \
+              unixodbc \
+              unixodbc-dev \
+              mssql-tools \
+              libgss3 \
+              odbcinst \
+              msodbcsql \
+              locales
+      - run:
+        name: Create Database
+        command: sqlcmd -H localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
       - run: ./bin/composer install -n --prefer-dist
 
       - save_cache:
