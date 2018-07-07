@@ -21,11 +21,6 @@ jobs:
           - ACCEPT_EULA: Y
           - MSSQL_SA_PASSWORD: L@r@v3lbl0g
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
-
     working_directory: ~/repo
 
     steps:
@@ -61,6 +56,12 @@ jobs:
                 locales \
             && echo "en_US.UTF-8 UTF-8" | sudo tee /etc/locale.gen \
             && sudo locale-gen
+
+      - run:
+          name: Install pdo_sqlsrv
+          command: |
+            pecl install pdo_sqlsrv-4.1.8preview sqlsrv-4.1.8preview \
+            && docker-php-ext-enable pdo_sqlsrv sqlsrv
 
       - run:
           name: Create Database
