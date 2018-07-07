@@ -42,9 +42,9 @@ jobs:
           command: |
             sudo apt-get update && \
             sudo apt-get install -y apt-transport-https \
-            && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-            && curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sources.list.d/mssql-release.list \
-            && apt-get update
+            && sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - \
+            && sudo curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+            && sudo apt-get update
 
       - run:
           name: 'Install mssql-tools'
