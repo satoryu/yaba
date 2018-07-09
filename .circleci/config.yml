@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
+      - image: satoryu/php-mssql:0.0.1
         environment:
           - APP_ENV: CI
           - DB_CONNECTION: sqlsrv
@@ -32,36 +32,6 @@ jobs:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
-      - run:
-          name: Install Microsoft Repository
-          command: |
-            sudo apt-get update && \
-            sudo apt-get install -y apt-transport-https \
-            && sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - \
-            && sudo curl -o /etc/apt/sources.list.d/mssql-release.list https://packages.microsoft.com/config/debian/8/prod.list \
-            && sudo apt-get update
-
-      - run:
-          name: 'Install mssql-tools'
-          command: |
-            sudo apt-get update && \
-            sudo ACCEPT_EULA=Y apt-get install -y \
-                unixodbc \
-                unixodbc-dev \
-                mssql-tools \
-                libgss3 \
-                odbcinst \
-                msodbcsql \
-                locales \
-            && echo "en_US.UTF-8 UTF-8" | sudo tee /etc/locale.gen \
-            && sudo locale-gen
-
-      - run:
-          name: Install pdo_sqlsrv
-          command: |
-            pecl install pdo_sqlsrv-4.1.8preview sqlsrv-4.1.8preview \
-            && docker-php-ext-enable pdo_sqlsrv sqlsrv
 
       - run:
           name: Create Database
