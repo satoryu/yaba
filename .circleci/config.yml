@@ -35,7 +35,7 @@ jobs:
 
       - run:
           name: Wait to ensure sql server becomes ready
-          comman: sleep 60
+          command: sleep 60
 
       - run:
           name: Create Database
