@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: satoryu/php-mssql:0.0.3
+      - image: satoryu/php-mssql:0.0.4
         environment:
           - APP_ENV: CI
           - DB_CONNECTION: sqlsrv
@@ -55,4 +55,7 @@ jobs:
           command: php artisan migrate
 
       # run tests!
-      - run: ./bin/composer exec -v phpunit
+      - run: ./bin/composer exec -v phpunit --coverage-html ./coverage
+
+      - store_artifacts:
+          path: ~/repo/coverage
