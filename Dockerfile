@@ -8,7 +8,8 @@ RUN apt-get update && \
         ssh \
         tar \
         gzip \
-        ca-certificates
+        ca-certificates \
+        zip unzip
 
 ## Install sqlsrv and pdo_sqlsrv
 # Ref. https://github.com/Microsoft/msphpsql/wiki/Install-and-configuration#docker-files
