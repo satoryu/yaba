@@ -55,7 +55,7 @@ jobs:
           command: php artisan migrate
 
       # run tests!
-      - run: ./bin/composer exec -v phpunit --coverage-html ./coverage
+      - run: ./bin/composer exec -v phpunit -- --coverage-html ./coverage
 
       - store_artifacts:
           path: ~/repo/coverage
