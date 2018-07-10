@@ -15,11 +15,11 @@ jobs:
           - DB_PORT: 1433
           - DB_DATABASE: blog
           - DB_USERNAME: sa
-          - DB_PASSWORD: Larav3lbl0g
+          - DB_PASSWORD: 1234abcD
       - image: microsoft/mssql-server-linux:2017-CU8
         environment:
           - ACCEPT_EULA: Y
-          - SA_PASSWORD: Larav3lbl0g
+          - SA_PASSWORD: 1234abcD
 
     working_directory: ~/repo
 
@@ -35,7 +35,7 @@ jobs:
 
       - run:
           name: Create Database
-          command: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Larav3lbl0g' -Q 'create database blog'
+          command: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 1234abcD -Q 'create database blog'
 
       - run: ./bin/composer install -n --prefer-dist
 
