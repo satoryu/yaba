@@ -7,19 +7,19 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
+      - image: satoryu/php-mssql:0.0.3
         environment:
           - APP_ENV: CI
           - DB_CONNECTION: sqlsrv
-          - DB_HOST: localhost
+          - DB_HOST: 127.0.0.1
           - DB_PORT: 1433
           - DB_DATABASE: blog
-          - DB_USERNAME: SA
-          - DB_PASSWORD: L@r@v3lbl0g
-      - image: microsoft/mssql-server-linux:2017-latest
+          - DB_USERNAME: sa
+          - DB_PASSWORD: Larav3lbl0g
+      - image: microsoft/mssql-server-linux:2017-CU8
         environment:
           - ACCEPT_EULA: Y
-          - MSSQL_SA_PASSWORD: L@r@v3lbl0g
+          - SA_PASSWORD: Larav3lbl0g
 
     working_directory: ~/repo
 
@@ -34,38 +34,8 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: Install Microsoft Repository
-          command: |
-            sudo apt-get update && \
-            sudo apt-get install -y apt-transport-https \
-            && sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - \
-            && sudo curl -o /etc/apt/sources.list.d/mssql-release.list https://packages.microsoft.com/config/debian/8/prod.list \
-            && sudo apt-get update
-
-      - run:
-          name: 'Install mssql-tools'
-          command: |
-            sudo apt-get update && \
-            sudo ACCEPT_EULA=Y apt-get install -y \
-                unixodbc \
-                unixodbc-dev \
-                mssql-tools \
-                libgss3 \
-                odbcinst \
-                msodbcsql \
-                locales \
-            && echo "en_US.UTF-8 UTF-8" | sudo tee /etc/locale.gen \
-            && sudo locale-gen
-
-      - run:
-          name: Install pdo_sqlsrv
-          command: |
-            pecl install pdo_sqlsrv-4.1.8preview sqlsrv-4.1.8preview \
-            && docker-php-ext-enable pdo_sqlsrv sqlsrv
-
-      - run:
           name: Create Database
-          command: /opt/mssql-tools/bin/sqlcmd -H localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
+          command: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Larav3lbl0g' -Q 'create database blog'
 
       - run: ./bin/composer install -n --prefer-dist
 

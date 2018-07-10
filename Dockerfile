@@ -1,5 +1,16 @@
 FROM php:7.1-cli
 
+## Install tools required for testing the app on CircleCI
+# Ref. https://circleci.com/docs/2.0/custom-images/#adding-required-and-custom-tools-or-files
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        ssh \
+        tar \
+        gzip \
+        ca-certificates \
+        zip unzip
+
 ## Install sqlsrv and pdo_sqlsrv
 # Ref. https://github.com/Microsoft/msphpsql/wiki/Install-and-configuration#docker-files
 # Add Microsoft repo for Microsoft ODBC Driver 13 for Linux
