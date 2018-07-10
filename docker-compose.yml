@@ -15,9 +15,9 @@ services:
     depends_on:
       - sqlsrver
   sqlsrver:
-    image: microsoft/mssql-server-linux:2017-latest
+    image: microsoft/mssql-server-linux:2017-CU8
     ports:
       - "1433:1433"
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=L@r@v3lbl0g
+      - SA_PASSWORD=L@r@v3lbl0g

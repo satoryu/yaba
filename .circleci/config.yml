@@ -35,7 +35,7 @@ jobs:
 
       - run:
           name: Create Database
-          command: /opt/mssql-tools/bin/sqlcmd -H 127.0.0.1 -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
+          command: /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'L@r@v3lbl0g' -Q 'create database blog'
 
       - run: ./bin/composer install -n --prefer-dist
 
