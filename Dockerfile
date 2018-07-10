@@ -35,6 +35,9 @@ RUN ACCEPT_EULA=Y apt-get install -y \
 RUN pecl install pdo_sqlsrv-4.1.8preview sqlsrv-4.1.8preview \
     && docker-php-ext-enable pdo_sqlsrv sqlsrv
 
+RUN pecl install xdebug-2.6.0 \
+    && docker-php-ext-enable xdebug
+
 RUN mkdir /app
 
 WORKDIR /app

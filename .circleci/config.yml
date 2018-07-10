@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: satoryu/php-mssql:0.0.3
+      - image: satoryu/php-mssql:0.0.4
         environment:
           - APP_ENV: CI
           - DB_CONNECTION: sqlsrv
@@ -15,11 +15,11 @@ jobs:
           - DB_PORT: 1433
           - DB_DATABASE: blog
           - DB_USERNAME: sa
-          - DB_PASSWORD: Larav3lbl0g
+          - DB_PASSWORD: 1234abcD
       - image: microsoft/mssql-server-linux:2017-CU8
         environment:
           - ACCEPT_EULA: Y
-          - SA_PASSWORD: Larav3lbl0g
+          - SA_PASSWORD: 1234abcD
 
     working_directory: ~/repo
 
@@ -34,8 +34,12 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: Wait to ensure sql server becomes ready
+          command: sleep 60
+
+      - run:
           name: Create Database
-          command: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Larav3lbl0g' -Q 'create database blog'
+          command: /opt/mssql-tools/bin/sqlcmd -S 'localhost,1433' -U sa -P 1234abcD -Q 'create database blog'
 
       - run: ./bin/composer install -n --prefer-dist
 
@@ -55,4 +59,7 @@ jobs:
           command: php artisan migrate
 
       # run tests!
-      - run: ./bin/composer exec -v phpunit
+      - run: ./bin/composer exec -v phpunit -- --coverage-html ./coverage
+
+      - store_artifacts:
+          path: ~/repo/coverage
