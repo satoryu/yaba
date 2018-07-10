@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: satoryu/php-mssql:0.0.1
+      - image: satoryu/php-mssql:0.0.2
         environment:
           - APP_ENV: CI
           - DB_CONNECTION: sqlsrv
