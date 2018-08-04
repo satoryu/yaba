@@ -6,7 +6,7 @@ services:
     volumes:
       - "./:/app:cached"
     ports:
-      - "80:8000"
+      - "8000:8000"
     environment:
       - DB_HOST=sqlsrver
       - DB_PORT=1433
